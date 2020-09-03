@@ -15,6 +15,7 @@ for tweet in tweets:
   # tweet.date = tweet.date.strftime('%Y年%m月%d日')
   tweet_params.extend([tweet.date, tweet.username, tweet.text])
   tweet_lst.append(tweet_params)
+  
   users.append(tweet.username)
 
 # print(users)
