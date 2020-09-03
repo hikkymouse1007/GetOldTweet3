@@ -1,0 +1,8 @@
+#!/bin/sh
+cd ~/Desktop/get_old_tweet/python3_docker
+docker-compose up -d
+docker exec python3 python opt/got3.py
+cp opt/tweet_test.csv ~/Desktop
+rm opt/tweet_test.csv
+docker-compose down
+open ~/Desktop/tweet_test.csv
