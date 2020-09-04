@@ -28,9 +28,9 @@ Column =['日付', 'アカウント名', 'ツイート']
 df = pd.DataFrame(tweet_lst, columns=Column)
 
 # # # # # csvの出力
-df.to_csv('/root/opt/tweet_test.csv',) # CSV形式で保存
+df.to_csv('/root/opt/tweet_test.csv',encoding='utf_8_sig') # CSV形式で保存
 
-# df_users = pd.DataFrame(users)
+df_users = pd.DataFrame(users)
 
 # # # # # # csvの出力
-# df_users.to_csv('/root/opt/tweet_users.csv',) # CSV形式で保存
+df_users.to_csv('/root/opt/tweet_users.csv', encoding='utf_8_sig') # CSV形式で保存
