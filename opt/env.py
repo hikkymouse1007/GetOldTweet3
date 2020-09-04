@@ -1,7 +1,10 @@
 import os
+# print(
+#         os.environ["TAG"],
+#         os.environ["FROM"],
+#         os.environ["UNTIL"],
+#         os.environ["NUM"]
+#     )
 print(
-        os.environ["TAG"],
-        os.environ["FROM"],
-        os.environ["UNTIL"],
-        os.environ["NUM"]
+        type(os.environ["PYTHON_VERSION"])
     )

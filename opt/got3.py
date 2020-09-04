@@ -1,7 +1,11 @@
 import GetOldTweets3 as got
 import pandas as pd
 from datetime import datetime
-
+import os
+# tweetCriteria = got.manager.TweetCriteria().setQuerySearch(os.environ["TAG"])\
+#                                            .setSince(os.environ["FROM"],)\
+#                                            .setUntil(os.environ["UNTIL"])\
+#                                            .setMaxTweets(int(os.environ["NUM"]))
 tweetCriteria = got.manager.TweetCriteria().setQuerySearch('#TEST')\
                                            .setSince("2020-08-28")\
                                            .setUntil("2020-09-1")\
@@ -15,7 +19,6 @@ for tweet in tweets:
   # tweet.date = tweet.date.strftime('%Y年%m月%d日')
   tweet_params.extend([tweet.date, tweet.username, tweet.text])
   tweet_lst.append(tweet_params)
-  
   users.append(tweet.username)
 
 # print(users)

@@ -1,8 +1,21 @@
 #!/bin/sh
+echo "次のデータを入力してenterを押してください"
+read -p "ハッシュタグ(eg. #きのこ): " str1
+read -p "データ取得開始日(eg. 2020-08-10): " str2
+read -p "データ取得終了日(eg. 2020-08-20): " str3
+read -p "取得ツイート件数(eg. 100): " str4
+TAG=$str1 FROM=$str2 UNTIL=$str3 NUM=$str4
+echo "入力されたデータ"
+echo $TAG $FROM $UNTIL $NUM
 cd ~/Desktop/get_old_tweet/python3_docker
-docker-compose up -d
-docker exec python3 python opt/got3.py
+docker-compose run \
+    --rm \
+    -e TAG=$TAG \
+    -e FROM=$FROM \
+    -e UNTIL=$UNTIL \
+    -e NUM=$NUM \
+    python3 \
+    python opt/got3.py
 cp opt/tweet_test.csv ~/Desktop
 rm opt/tweet_test.csv
-docker-compose down
 open ~/Desktop/tweet_test.csv
