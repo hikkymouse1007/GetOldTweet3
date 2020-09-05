@@ -7,15 +7,28 @@ read -p "取得ツイート件数(eg. 100): " str4
 TAG=$str1 FROM=$str2 UNTIL=$str3 NUM=$str4
 echo "入力されたデータ"
 echo $TAG $FROM $UNTIL $NUM
-cd ~/Desktop/get_old_tweet/python3_docker
+ANIMALS=("cheese" \
+         "cock" \
+         "dragon-and-cow" \
+        "ghostbusters" \
+        "pony" \
+        "stegosaurus" \
+        "turtle" \
+        "turkey" \
+        "gnu"\
+        )   
+ANIMAL=${ANIMALS[$(($RANDOM % ${#ANIMALS[*]}))]}
+cd ~/Desktop/get_old_tweet
 docker-compose run \
     --rm \
     -e TAG=$TAG \
     -e FROM=$FROM \
     -e UNTIL=$UNTIL \
     -e NUM=$NUM \
+    -e ANIMAL=$ANIMAL \
     python3 \
-    python opt/got3.py
+    python /root/opt/got3.py && \
+    cowsay -f  $ANIMAL “ツイートを収集したよ” 
 cp opt/tweet_test.csv ~/Desktop
 rm opt/tweet_test.csv
 open ~/Desktop/tweet_test.csv
