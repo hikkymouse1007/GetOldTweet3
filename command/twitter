@@ -16,9 +16,9 @@ ANIMALS=("cheese" \
         "turtle" \
         "turkey" \
         "gnu"\
-        )   
+        )
 ANIMAL=${ANIMALS[$(($RANDOM % ${#ANIMALS[*]}))]}
-cd ~/Desktop/get_old_tweet
+cd ~/Desktop/get_old_tweet/python3_docker
 docker-compose run \
     --rm \
     -e TAG=$TAG \
@@ -27,8 +27,7 @@ docker-compose run \
     -e NUM=$NUM \
     -e ANIMAL=$ANIMAL \
     python3 \
-    python /root/opt/got3.py && \
-    cowsay -f  $ANIMAL “ツイートを収集したよ” 
-cp opt/tweet_test.csv ~/Desktop
-rm opt/tweet_test.csv
-open ~/Desktop/tweet_test.csv
+    /bin/bash -c "python /root/opt/got3.py && cowsay -f $ANIMAL “ツイートを収集したよ” "
+# cp opt/tweet_test.csv ~/Desktop
+# rm opt/tweet_test.csv
+# open ~/Desktop/tweet_test.csv
