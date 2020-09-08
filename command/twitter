@@ -7,6 +7,7 @@ read -p "取得ツイート件数(eg. 100): " str4
 TAG=$str1 FROM=$str2 UNTIL=$str3 NUM=$str4
 echo "入力されたデータ"
 echo $TAG $FROM $UNTIL $NUM
+
 ANIMALS=("cheese" \
          "cock" \
          "dragon-and-cow" \
@@ -28,6 +29,8 @@ docker-compose run \
     -e ANIMAL=$ANIMAL \
     python3 \
     /bin/bash -c "python /root/opt/got3.py && cowsay -f $ANIMAL “ツイートを収集したよ” "
-# cp opt/tweet_test.csv ~/Desktop
-# rm opt/tweet_test.csv
-# open ~/Desktop/tweet_test.csv
+FILEPATH="${TAG}_from_${FROM}_to_${UNTIL}_${NUM}件.csv"
+echo $FILEPATH
+cp opt/$FILEPATH ~/Desktop/twitter_csv_files
+rm opt/$FILEPATH
+open ~/Desktop/twitter_csv_files/$FILEPATH
